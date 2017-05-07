@@ -61,12 +61,14 @@ namespace WebAPI.Controllers
                 return this.BadRequest("Can`t save this comment");
             }
 
-            return this.Ok();
+            var lastCommentId = this.comments.All().Where(x=>x.UsersId==userId).OrderByDescending(x => x.CreatedOn).FirstOrDefault().Id;
+
+            return this.Ok(lastCommentId);
         }
         [HttpPut]
-        public IHttpActionResult DeleteComment(int id)
+        public IHttpActionResult DeleteComment(DeleteCommentModel comment)
         {
-            int comentId = id;
+            int comentId = comment.CommentId;
             var currentComent = this.comments.All().Where(x => x.Id == comentId && x.isDeleted == false).FirstOrDefault();
             if (currentComent == null)
             {

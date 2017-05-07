@@ -215,6 +215,7 @@
     </Compile>
     <Compile Include="Models\Account\AccountBindingModels.cs" />
     <Compile Include="Models\Account\AccountViewModels.cs" />
+    <Compile Include="Models\Comments\DeleteCommentModel.cs" />
     <Compile Include="Models\Comments\CreateCommentModel.cs" />
     <Compile Include="Models\Movies\LikeAMovieModel.cs" />
     <Compile Include="Models\Movies\MoviesCreateModel.cs" />
