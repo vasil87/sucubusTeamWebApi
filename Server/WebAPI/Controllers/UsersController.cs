@@ -24,7 +24,7 @@
         public IHttpActionResult Register(Users user)
         {
             var allUsersQuearable = this.users.All();
-            var userWithThisNameCount = allUsersQuearable.Where(x => x.UserName == user.UserName).Count();
+            var userWithThisNameCount = allUsersQuearable.Where(x => x.Email == user.Email).Count();
          
             if (userWithThisNameCount > 0)
             {
@@ -44,7 +44,6 @@
             return this.Ok(this.users.All().Where(x => x.UserName == user.UserName).FirstOrDefault().UsersId);
         }
         [HttpGet]
-        [AllowAnonymous]
         public IHttpActionResult Get()
         {
             var res= this.users.All().Where( x=>x.Expire == false).OrderBy(x => x.LastName).ThenBy(x => x.FirstName).Select(x=>new { x.FirstName,x.LastName,x.UserName,x.UsersId,x.isMale,x.City,x.Email} ).ToList();
